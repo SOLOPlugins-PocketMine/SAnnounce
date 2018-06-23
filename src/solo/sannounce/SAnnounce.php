@@ -51,11 +51,7 @@ class SAnnounce extends PluginBase{
       $this->getServer()->getCommandMap()->register("sannounce", new $class($this));
     }
 
-    $this->announceTaskHandler = $this->getServer()->getScheduler()->scheduleRepeatingTask(new AnnounceTask($this), $this->getAnnounceInterval() * 20);
-  }
-
-  public function onDisable(){
-
+    $this->announceTaskHandler = $this->getScheduler()->scheduleRepeatingTask(new AnnounceTask($this), $this->getAnnounceInterval() * 20);
   }
 
   public function getAnnounce(int $index){

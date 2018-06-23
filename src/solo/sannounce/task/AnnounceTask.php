@@ -2,11 +2,18 @@
 
 namespace solo\sannounce\task;
 
-use solo\sannounce\SAnnounceTask;
+use pocketmine\scheduler\Task;
+use solo\sannounce\SAnnounce;
 
-class AnnounceTask extends SAnnounceTask{
+class AnnounceTask extends Task{
 
-  public function _onRun(int $currentTick){
+  private $owner;
+
+  public function __construct(SAnnounce $owner){
+    $this->owner = $owner;
+  }
+
+  public function onRun(int $currentTick){
     $announce = $this->owner->getNextAnnounce();
     if($announce !== null){
       $prefix = $this->owner->getAnnouncePrefix();
