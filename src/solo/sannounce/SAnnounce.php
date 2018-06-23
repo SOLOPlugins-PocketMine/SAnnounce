@@ -80,9 +80,9 @@ class SAnnounce extends PluginBase{
     $this->config->set("announce-interval", $interval);
 
     if($this->announceTaskHandler !== null){
-      $this->getServer()->getScheduler()->cancelTask($this->announceTaskHandler->getTaskId());
+      $this->getScheduler()->cancelTask($this->announceTaskHandler->getTaskId());
     }
-    $this->announceTaskHandler = $this->getServer()->getScheduler()->scheduleRepeatingTask(new AnnounceTask($this), $this->getAnnounceInterval() * 20);
+    $this->announceTaskHandler = $this->getScheduler()->scheduleRepeatingTask(new AnnounceTask($this), $this->getAnnounceInterval() * 20);
   }
 
   public function getAnnounceInterval(){
